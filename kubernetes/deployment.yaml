@@ -1,26 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-webapp
-  spec:
-    replicas: 3
+  name: python-deployment
+  labels:
+    app: myapp
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: myapp
   template:
     metadata:
-      labels:
-        app: myapp
+        labels:
+          app: myapp
     spec:
       containers:
       - name: webapp 
-        image: <Image>
+        image: josephquay/webapp:1.0
         resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
         ports:
-        - containerPort: 5000
+          - containerPort: 5000
          
 # add image name 
